@@ -1,4 +1,4 @@
-# GULP
+# GULP: Gated Unimodal Loudness Pulse
 
 自訂的 GULP activation function 與參數掃描工具。
 
