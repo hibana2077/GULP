@@ -98,9 +98,20 @@ class CifarDataset(Dataset):
         self.df = self.df[self.df['split'] == split].reset_index(drop=True)
         self.transform = transform
         
-        # Create label mapping
-        self.classes = sorted(self.df['class_name'].unique())
-        self.class_to_idx = {cls: idx for idx, cls in enumerate(self.classes)}
+        # Check if class_name column exists
+        if 'class_name' in self.df.columns:
+            # Create label mapping from class names
+            self.classes = sorted(self.df['class_name'].unique())
+            self.class_to_idx = {cls: idx for idx, cls in enumerate(self.classes)}
+            self.use_class_names = True
+        else:
+            # Use label numbers directly if class_name doesn't exist
+            unique_labels = sorted(self.df['label'].unique())
+            self.classes = [f"class_{label}" for label in unique_labels]
+            self.class_to_idx = {f"class_{label}": label for label in unique_labels}
+            self.use_class_names = False
+            print("Warning: 'class_name' column not found, using label numbers as class names")
+        
         self.num_classes = len(self.classes)
         
         print(f"Loaded {len(self.df)} {split} samples with {self.num_classes} classes")
@@ -116,7 +127,10 @@ class CifarDataset(Dataset):
         image = Image.open(io.BytesIO(image_bytes)).convert('RGB')
         
         # Get label
-        label = self.class_to_idx[row['class_name']]
+        if self.use_class_names:
+            label = self.class_to_idx[row['class_name']]
+        else:
+            label = row['label']
         
         if self.transform:
             image = self.transform(image)
