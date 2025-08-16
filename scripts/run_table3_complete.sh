@@ -36,7 +36,7 @@ for seed in "${SEEDS[@]}"; do
     # ReLU
     python3 train.py \
         --dataset cifar10 \
-        --model resnet18 \
+        --model resnet18.fb_swsl_ig1b_ft_in1k \
         --activation relu \
         --epochs 100 \
         --batch_size 128 \
@@ -52,7 +52,7 @@ for seed in "${SEEDS[@]}"; do
     # GELU
     python3 train.py \
         --dataset cifar10 \
-        --model resnet18 \
+        --model resnet18.fb_swsl_ig1b_ft_in1k \
         --activation gelu \
         --epochs 100 \
         --batch_size 128 \
@@ -68,7 +68,7 @@ for seed in "${SEEDS[@]}"; do
     # SiLU
     python3 train.py \
         --dataset cifar10 \
-        --model resnet18 \
+        --model resnet18.fb_swsl_ig1b_ft_in1k \
         --activation silu \
         --epochs 100 \
         --batch_size 128 \
@@ -84,7 +84,7 @@ for seed in "${SEEDS[@]}"; do
     # GULP
     python3 train.py \
         --dataset cifar10 \
-        --model resnet18 \
+        --model resnet18.fb_swsl_ig1b_ft_in1k \
         --activation gulp \
         --epochs 100 \
         --batch_size 128 \
@@ -110,7 +110,7 @@ for seed in "${SEEDS[@]}"; do
     # ReLU
     python3 train.py \
         --dataset cifar100 \
-        --model wide_resnet50_2 \
+        --model resnet50.fb_swsl_ig1b_ft_in1k \
         --activation relu \
         --epochs 100 \
         --batch_size 128 \
@@ -126,7 +126,7 @@ for seed in "${SEEDS[@]}"; do
     # GELU
     python3 train.py \
         --dataset cifar100 \
-        --model wide_resnet50_2 \
+        --model resnet50.fb_swsl_ig1b_ft_in1k \
         --activation gelu \
         --epochs 100 \
         --batch_size 128 \
@@ -142,7 +142,7 @@ for seed in "${SEEDS[@]}"; do
     # SiLU
     python3 train.py \
         --dataset cifar100 \
-        --model wide_resnet50_2 \
+        --model resnet50.fb_swsl_ig1b_ft_in1k \
         --activation silu \
         --epochs 100 \
         --batch_size 128 \
@@ -158,7 +158,7 @@ for seed in "${SEEDS[@]}"; do
     # GULP
     python3 train.py \
         --dataset cifar100 \
-        --model wide_resnet50_2 \
+        --model resnet50.fb_swsl_ig1b_ft_in1k \
         --activation gulp \
         --epochs 100 \
         --batch_size 128 \

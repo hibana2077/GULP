@@ -28,7 +28,7 @@ echo "Starting CIFAR-100 Wide-ResNet-50-2 experiments..."
 # ReLU baseline
 python3 train.py \
     --dataset cifar100 \
-    --model wide_resnet50_2 \
+    --model resnet50.fb_swsl_ig1b_ft_in1k \
     --activation relu \
     --epochs 100 \
     --batch_size 128 \
@@ -44,7 +44,7 @@ python3 train.py \
 # GELU
 python3 train.py \
     --dataset cifar100 \
-    --model wide_resnet50_2 \
+    --model resnet50.fb_swsl_ig1b_ft_in1k \
     --activation gelu \
     --epochs 100 \
     --batch_size 128 \
@@ -60,7 +60,7 @@ python3 train.py \
 # SiLU
 python3 train.py \
     --dataset cifar100 \
-    --model wide_resnet50_2 \
+    --model resnet50.fb_swsl_ig1b_ft_in1k \
     --activation silu \
     --epochs 100 \
     --batch_size 128 \
@@ -76,7 +76,7 @@ python3 train.py \
 # GULP
 python3 train.py \
     --dataset cifar100 \
-    --model wide_resnet50_2 \
+    --model resnet50.fb_swsl_ig1b_ft_in1k \
     --activation gulp \
     --epochs 100 \
     --batch_size 128 \
