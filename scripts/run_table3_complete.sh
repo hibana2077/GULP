@@ -40,8 +40,8 @@ for seed in "${SEEDS[@]}"; do
         --activation relu \
         --epochs 100 \
         --batch_size 128 \
-    --lr 0.001 \
-    --optimizer adamw \
+        --lr 0.001 \
+        --optimizer adamw \
         --momentum 0.9 \
         --weight_decay 5e-4 \
         --scheduler cosine \
@@ -56,8 +56,8 @@ for seed in "${SEEDS[@]}"; do
         --activation gelu \
         --epochs 100 \
         --batch_size 128 \
-    --lr 0.001 \
-    --optimizer adamw \
+        --lr 0.001 \
+        --optimizer adamw \
         --momentum 0.9 \
         --weight_decay 5e-4 \
         --scheduler cosine \
@@ -72,8 +72,8 @@ for seed in "${SEEDS[@]}"; do
         --activation silu \
         --epochs 100 \
         --batch_size 128 \
-    --lr 0.001 \
-    --optimizer adamw \
+        --lr 0.001 \
+        --optimizer adamw \
         --momentum 0.9 \
         --weight_decay 5e-4 \
         --scheduler cosine \
@@ -88,8 +88,8 @@ for seed in "${SEEDS[@]}"; do
         --activation gulp \
         --epochs 100 \
         --batch_size 128 \
-    --lr 0.001 \
-    --optimizer adamw \
+        --lr 0.001 \
+        --optimizer adamw \
         --momentum 0.9 \
         --weight_decay 5e-4 \
         --scheduler cosine \
@@ -114,8 +114,8 @@ for seed in "${SEEDS[@]}"; do
         --activation relu \
         --epochs 100 \
         --batch_size 128 \
-    --lr 0.001 \
-    --optimizer adamw \
+        --lr 0.001 \
+        --optimizer adamw \
         --momentum 0.9 \
         --weight_decay 5e-4 \
         --scheduler cosine \
@@ -130,8 +130,8 @@ for seed in "${SEEDS[@]}"; do
         --activation gelu \
         --epochs 100 \
         --batch_size 128 \
-    --lr 0.001 \
-    --optimizer adamw \
+        --lr 0.001 \
+        --optimizer adamw \
         --momentum 0.9 \
         --weight_decay 5e-4 \
         --scheduler cosine \
@@ -146,8 +146,8 @@ for seed in "${SEEDS[@]}"; do
         --activation silu \
         --epochs 100 \
         --batch_size 128 \
-    --lr 0.001 \
-    --optimizer adamw \
+        --lr 0.001 \
+        --optimizer adamw \
         --momentum 0.9 \
         --weight_decay 5e-4 \
         --scheduler cosine \
@@ -162,8 +162,8 @@ for seed in "${SEEDS[@]}"; do
         --activation gulp \
         --epochs 100 \
         --batch_size 128 \
-    --lr 0.001 \
-    --optimizer adamw \
+        --lr 0.001 \
+        --optimizer adamw \
         --momentum 0.9 \
         --weight_decay 5e-4 \
         --scheduler cosine \

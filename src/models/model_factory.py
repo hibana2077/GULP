@@ -8,7 +8,11 @@ import os
 # Add the act module to path
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'act'))
 
-from gulp import GULP
+try:
+    from gulp import GULP
+except ImportError:
+    print("Warning: GULP module not found. GULP activation will not be available.")
+    GULP = None
 
 
 def replace_activation_recursive(module: nn.Module, old_activation: type, new_activation: nn.Module) -> None:
@@ -35,6 +39,8 @@ def get_activation_function(activation_name: str, **kwargs) -> nn.Module:
     elif activation_name == "mish":
         return nn.Mish(inplace=True)
     elif activation_name == "gulp":
+        if GULP is None:
+            raise ImportError("GULP activation is not available. Please check the gulp module.")
         return GULP(**kwargs)
     else:
         raise ValueError(f"Unsupported activation: {activation_name}")
@@ -142,45 +148,18 @@ class ModelFactory:
         model_name: str,
         activation_name: str, 
         num_classes: int = 10,
+        pretrained: bool = False,
         **activation_kwargs
     ) -> nn.Module:
-        """Create model optimized for CIFAR datasets"""
+        """Create model for CIFAR datasets - just use timm model directly"""
         
-        # For CIFAR, we typically use smaller input sizes
-        if "resnet" in model_name.lower():
-            # Use CIFAR-optimized ResNet if available
-            if model_name == "resnet18":
-                model_name = "resnet18"
-            elif model_name == "resnet50": 
-                model_name = "resnet50"
-            # Note: Some timm models have CIFAR variants
-        
-        model = create_model_with_activation(
+        return create_model_with_activation(
             model_name=model_name,
             num_classes=num_classes,
             activation_name=activation_name,
-            pretrained=False,  # Usually no pretrained weights for CIFAR
+            pretrained=pretrained,
             **activation_kwargs
         )
-        
-        # Modify first conv layer for CIFAR (32x32 instead of 224x224)
-        if hasattr(model, 'conv1') and isinstance(model.conv1, nn.Conv2d):
-            # Change stride and kernel size for CIFAR
-            old_conv = model.conv1
-            model.conv1 = nn.Conv2d(
-                old_conv.in_channels,
-                old_conv.out_channels, 
-                kernel_size=3,
-                stride=1,
-                padding=1,
-                bias=old_conv.bias is not None
-            )
-            
-        # Remove max pooling for CIFAR if present
-        if hasattr(model, 'maxpool'):
-            model.maxpool = nn.Identity()
-            
-        return model
     
     @staticmethod
     def create_imagenet_model(

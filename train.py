@@ -176,6 +176,7 @@ def train_model(args: argparse.Namespace) -> Dict[str, Any]:
             model_name=args.model,
             activation_name=args.activation,
             num_classes=num_classes,
+            pretrained=args.pretrained,
             **activation_kwargs
         )
     else:
