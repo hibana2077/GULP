@@ -1,0 +1,12 @@
+torch
+torchvision
+timm
+pandas
+numpy
+matplotlib
+seaborn
+requests
+Pillow
+tqdm
+scikit-learn
+pyarrow  # For parquet files

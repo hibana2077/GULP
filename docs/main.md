@@ -96,7 +96,7 @@ We structure claims and tests to align with ICLR reviewing criteria: clear basel
 
 ## 5. Results Templates (to be filled)
 
-**Table 1. ImageNet‑1k Top‑1/Top‑5 and efficiency (ResNet‑50).**
+**Table 1. ImageNet‑1k Top‑1/Top‑5 and efficiency (resnet50.fb_swsl_ig1b_ft_in1k).**
 
 | Activation | Top‑1 | Top‑5 | Throughput (img/s) | Peak Mem (GB) |
 | ---------- | ----: | ----: | -----------------: | ------------: |
@@ -118,8 +118,8 @@ We structure claims and tests to align with ICLR reviewing criteria: clear basel
 
 | Dataset   | Model     | ReLU | GELU | SiLU | **GULP** |
 | --------- | --------- | ---: | ---: | ---: | -------: |
-| CIFAR‑10  | ResNet‑18 |      |      |      |          |
-| CIFAR‑100 | WRN‑28‑10 |      |      |      |          |
+| CIFAR‑10  | resnet18 |      |      |      |          |
+| CIFAR‑100 | wide_resnet50_2 |      |      |      |          |
 
 **Table 4. Robustness on ImageNet‑C (lower is better).**
 
