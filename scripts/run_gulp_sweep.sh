@@ -4,7 +4,7 @@
 #PBS -l ngpus=1            
 #PBS -l ncpus=12            
 #PBS -l mem=20GB           
-#PBS -l walltime=72:30:00  
+#PBS -l walltime=26:30:00  
 #PBS -l wd                  
 #PBS -l storage=scratch/rp06
 
@@ -21,8 +21,8 @@ cd ..
 mkdir -p ./experiments/logs/gulp_sweep
 
 # Grid from docs/main.md
-alpha_list=(0.8 1.0 1.2 1.5 2.0)
-A_list=(0 0.1 0.2 0.3 0.5)
+alpha_list=(0.8 1.2 2.0)
+A_list=(0 0.2 0.5)
 mu_list=(0.5 1.0 1.5)
 sigma_list=(0.3 0.5 0.8)
 
