@@ -16,7 +16,7 @@ module load cuda/12.6.2
 source /scratch/rp06/sl5952/GULP/.venv/bin/activate
 
 # Change to project directory
-cd $PBS_O_WORKDIR
+cd ..
 
 # Set environment variables to avoid compatibility issues
 export TORCH_DISABLE_BFLOAT16=1
