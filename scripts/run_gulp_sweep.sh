@@ -7,7 +7,6 @@
 #PBS -l walltime=26:00:00
 #PBS -l wd
 #PBS -l storage=scratch/rp06
-#PBS -J 1-81   # ← 81 個 array 任務，1 個任務=1 組超參數
 
 set -euo pipefail
 
