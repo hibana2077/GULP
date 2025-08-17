@@ -7,6 +7,7 @@
 #PBS -l walltime=26:00:00
 #PBS -l wd
 #PBS -l storage=scratch/rp06
+#PBS -J 1-81
 
 set -euo pipefail
 
