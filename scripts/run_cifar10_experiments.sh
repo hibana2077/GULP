@@ -92,6 +92,4 @@ python3 train.py \
     --gulp_mu 0.5 \
     --gulp_sigma 0.8 \
     --save_dir ./experiments \
-    >> CIFAR10_GULP_seed42.log 2>&1 &
-
-echo "Launched CIFAR-10 GULP sweep runs (backgrounded). Logs: ./experiments/logs/gulp_sweep/"
+    >> CIFAR10_GULP_seed42.log 2>&1
