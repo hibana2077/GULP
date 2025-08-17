@@ -20,6 +20,8 @@ cd ..
 
 mkdir -p ./experiments/logs/gulp_sweep
 
+export MAX_JOBS=8
+
 # Grid from docs/main.md
 alpha_list=(0.8 1.2 2.0)
 A_list=(0 0.2 0.5)
@@ -61,7 +63,7 @@ for alpha in "${alpha_list[@]}"; do
 
         # throttle background launches to limit concurrent jobs
         while [ "$(jobs -p | wc -l)" -ge "${MAX_JOBS}" ]; do
-          sleep 2
+          sleep 5
         done
 
       done
