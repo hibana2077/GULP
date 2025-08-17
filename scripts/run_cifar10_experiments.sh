@@ -74,53 +74,24 @@ python3 train.py \
     >> CIFAR10_SiLU_seed42.log 2>&1
 
 
-# GULP: parameter sweep based on docs/main.md Appendix B
-# Grid: alpha in {0.8,1.0,1.2,1.5,2.0}, A in {0,0.1,0.2,0.3,0.5}, mu in {0.5,1.0,1.5}, sigma_b in {0.3,0.5,0.8}
-mkdir -p ./experiments/logs/gulp_sweep
-
-alpha_list=(0.8 1.0 1.2 1.5 2.0)
-A_list=(0 0.1 0.2 0.3 0.5)
-mu_list=(0.5 1.0 1.5)
-sigma_list=(0.3 0.5 0.8)
-
-for alpha in "${alpha_list[@]}"; do
-    for A in "${A_list[@]}"; do
-        for mu in "${mu_list[@]}"; do
-            for sigma_b in "${sigma_list[@]}"; do
-                # safe names for files (replace dots with 'p')
-                safe_alpha=${alpha//./p}
-                safe_A=${A//./p}
-                safe_mu=${mu//./p}
-                safe_sigma=${sigma_b//./p}
-
-                logname=./experiments/logs/gulp_sweep/CIFAR10_GULP_a${safe_alpha}_A${safe_A}_mu${safe_mu}_s${safe_sigma}_seed42.log
-
-                echo "Running GULP sweep: alpha=${alpha}, A=${A}, mu=${mu}, sigma_b=${sigma_b} -> ${logname}"
-
-                python3 train.py \
-                    --dataset cifar10 \
-                    --model resnet18.fb_swsl_ig1b_ft_in1k \
-                    --activation gulp \
-                    --epochs 100 \
-                    --batch_size 128 \
-                    --lr 0.001 \
-                    --optimizer adamw \
-                    --momentum 0.9 \
-                    --weight_decay 5e-4 \
-                    --scheduler cosine \
-                    --seed 42 \
-                    --gulp_alpha ${alpha} \
-                    --gulp_amp ${A} \
-                    --gulp_mu ${mu} \
-                    --gulp_sigma ${sigma_b} \
-                    --save_dir ./experiments \
-                    >> "${logname}" 2>&1 &
-
-                # throttle background launches to avoid oversubscribing a single GPU in interactive use
-                sleep 0.5
-            done
-        done
-    done
-done
+# GULP
+python3 train.py \
+    --dataset cifar10 \
+    --model resnet18.fb_swsl_ig1b_ft_in1k \
+    --activation gulp \
+    --epochs 100 \
+    --batch_size 128 \
+    --lr 0.001 \
+    --optimizer adamw \
+    --momentum 0.9 \
+    --weight_decay 5e-4 \
+    --scheduler cosine \
+    --seed 42 \
+    --gulp_alpha 2.0 \
+    --gulp_amp 0.2 \
+    --gulp_mu 0.5 \
+    --gulp_sigma 0.8 \
+    --save_dir ./experiments \
+    >> CIFAR10_GULP_seed42.log 2>&1 &
 
 echo "Launched CIFAR-10 GULP sweep runs (backgrounded). Logs: ./experiments/logs/gulp_sweep/"

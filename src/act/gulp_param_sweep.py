@@ -5,7 +5,7 @@ from pathlib import Path
 import torch
 import matplotlib.pyplot as plt
 
-from .gulp import GULP
+from gulp import GULP
 
 
 def parse_list(s: str, type_fn=float):
@@ -35,10 +35,10 @@ def plot_activation(model: GULP, x, title: str, save_path: Path):
 
 def main():
     parser = argparse.ArgumentParser(description='GULP Activation Parameter Sweep')
-    parser.add_argument('--alpha', default='0.5,1.0,1.5', help='逗號分隔的 alpha 列表')
-    parser.add_argument('--bump_amp', default='0.0,0.25,0.5', help='逗號分隔的 bump_amp 列表')
-    parser.add_argument('--mu', default='0.0,1.0', help='逗號分隔的 mu 列表')
-    parser.add_argument('--sigma', default='0.5,1.0', help='逗號分隔的 sigma 列表')
+    parser.add_argument('--alpha', default='2.0', help='逗號分隔的 alpha 列表')
+    parser.add_argument('--bump_amp', default='0.2', help='逗號分隔的 bump_amp 列表')
+    parser.add_argument('--mu', default='0.0,0.5', help='逗號分隔的 mu 列表')
+    parser.add_argument('--sigma', default='0.5,0.8', help='逗號分隔的 sigma 列表')
     parser.add_argument('--x-range', nargs=2, type=float, default=[-5.0, 5.0], help='x 起訖值')
     parser.add_argument('--points', type=int, default=500, help='取樣點數')
     parser.add_argument('--out-dir', default='docs/imgs', help='輸出資料夾')
