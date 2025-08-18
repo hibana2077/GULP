@@ -86,10 +86,10 @@ python3 train.py \
     --weight_decay 5e-4 \
     --scheduler cosine \
     --seed 42 \
-    --gulp_alpha 1.2 \
-    --gulp_amp 0.25 \
-    --gulp_mu 1.0 \
-    --gulp_sigma 0.5 \
+    --gulp_alpha 2.0 \
+    --gulp_amp 0.2 \
+    --gulp_mu 0.5 \
+    --gulp_sigma 0.8 \
     --save_dir ./experiments \
     >> CIFAR100_GULP_seed42.log 2>&1
 
