@@ -44,7 +44,7 @@ safe_A=${A//./p}
 safe_mu=${mu//./p}
 safe_sigma=${sigma_b//./p}
 
-logname="${LOG_DIR}/CIFAR10_GULP_a${safe_alpha}_A${safe_A}_mu${safe_mu}_s${safe_sigma}_seed42.log"
+logname="${LOG_DIR}/CIFAR100_GULP_a${safe_alpha}_A${safe_A}_mu${safe_mu}_s${safe_sigma}_seed42.log"
 
 export OMP_NUM_THREADS=4
 export MKL_NUM_THREADS=4
@@ -53,7 +53,7 @@ export OPENBLAS_NUM_THREADS=4
 echo "[$(date)] Start: a=${alpha} A=${A} mu=${mu} s=${sigma_b} (idx=${PBS_ARRAY_INDEX}) -> ${logname}"
 
 python3 train.py \
-  --dataset cifar10 \
+  --dataset cifar100 \
   --model resnet18.fb_swsl_ig1b_ft_in1k \
   --activation gulp \
   --epochs 100 \
