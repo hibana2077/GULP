@@ -23,10 +23,10 @@ export LOG_DIR="/scratch/rp06/sl5952/GULP/experiments/logs/gulp_sweep"
 export SAVE_DIR="/scratch/rp06/sl5952/GULP/experiments/ckpts/gulp_sweep"
 mkdir -p "$LOG_DIR" "$SAVE_DIR"
 
-alphas=(0.8 1.2 2.0)
-As=(0 0.2 0.5)
-mus=(0.5 1.0 1.5)
-sigmas=(0.3 0.5 0.8)
+alphas=(0.8 1.0 1.2)
+As=(0.3 0.4 0.5)
+mus=(0.4 0.5 0.6)
+sigmas=(0.2 0.3 0.4)
 
 i=$((PBS_ARRAY_INDEX-1))
 ia=$(( (i/(3*3*3)) % 3 ))
